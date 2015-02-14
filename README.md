@@ -5,7 +5,6 @@ Online repo for battleship
 -If there are confilt issues when merging wait till class to commit them. We can look together and figure out what the problem is and what code needs to stay.
 - Do not commit directly to the master branch. Creat a new branch and name it somthing that makes sense and someone will aprove teh pull request.
 These are just some small things if anyone else thinks that we should add more "code of conduct" just fork and make your own changes and someone else will aprove the commit back to the main branch.
-
 /////
 
 Remember to check out the [GitHub Bootcamp](https://help.github.com/categories/bootcamp/) and the [Glossary](https://help.github.com/articles/github-glossary/) before playing with Git.
