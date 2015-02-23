@@ -1,6 +1,11 @@
 # battleship
 Online repo for battleship
 
+DOWNLOAD THESE!
+GitHub Desktop
+Windows: (https://windows.github.com/)
+Mac: (https://mac.github.com/)
+
 ///Notes to Class///
 -From now if you want a commit for a change someone else must approve it. This will limit the amount of issues.
 -If there are confilt issues when merging wait till class to commit them. We can look together and figure out what the problem   is and what code needs to stay.
