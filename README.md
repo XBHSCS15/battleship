@@ -2,8 +2,11 @@
 Online repo for battleship
 
 DOWNLOAD THESE!
+
 GitHub Desktop
+
 Windows: https://windows.github.com/
+
 Mac: https://mac.github.com/
 
 ///Notes to Class///
