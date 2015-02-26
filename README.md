@@ -16,7 +16,7 @@ GitHub Desktop
 
 These are just some small things if anyone else thinks that we should add more "code of conduct" just fork and make your own changes and someone else will aprove the commit back to the main branch.
 
-### Learn Git! ###
+### :bangbang: :octocat: Learn Git! :octocat: :bangbang:###
 
 Remember to check out the [GitHub Bootcamp](https://help.github.com/categories/bootcamp/) and the [Glossary](https://help.github.com/articles/github-glossary/) before playing with Git.
 
