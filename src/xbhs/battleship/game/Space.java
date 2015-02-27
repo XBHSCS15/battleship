@@ -11,6 +11,11 @@ public class Space
 		hit = false;
 	}
 	
+	public void hit()
+	{
+		hit = true;
+	}
+	
 	public boolean hasShip()
 	{
 		return ship != null;
@@ -34,7 +39,6 @@ public class Space
 	
 	public boolean isHit()
 	{
-		ship.incrementHitCount();
 		return hit;
 	}
 }
