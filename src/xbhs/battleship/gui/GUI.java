@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 package xbhs.battleship.gui;
 
@@ -13,3 +14,13 @@ public class GUI
     }
     
 }
+=======
+// Placeholder Class
+
+package xbhs.battleship.gui;
+
+public class GUI
+{
+
+}
+>>>>>>> origin/GameLogic
