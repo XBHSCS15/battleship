@@ -42,7 +42,7 @@ public class Space
 		}
 	}
 	
-	public boolean hasBeenHit()
+	public boolean isHit()
 	{
 		return hit;
 	}
