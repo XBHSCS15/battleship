@@ -1,5 +1,9 @@
 package xbhs.battleship.game;
 
+/**
+ * @author Mohak
+ *
+ */
 public class Space
 {
 	private Ship ship;
@@ -13,6 +17,7 @@ public class Space
 	
 	public void hit()
 	{
+		ship.incrementHitCount();
 		hit = true;
 	}
 	
@@ -20,7 +25,7 @@ public class Space
 	{
 		return ship != null;
 	}
-	 
+	
 	public Ship shipContained()
 	{
 		return ship;
@@ -37,7 +42,7 @@ public class Space
 		}
 	}
 	
-	public boolean isHit()
+	public boolean hasBeenHit()
 	{
 		return hit;
 	}
