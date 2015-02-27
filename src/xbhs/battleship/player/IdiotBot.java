@@ -43,6 +43,13 @@ public class IdiotBot implements Player
         return true;
     }
     
+    public ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships)
+    {
+        // TODO: method is not finished
+        ShipPlacement[] shipPlacements = new ShipPlacement[ships.length];
+        return shipPlacements;
+    }
+    
     // some debug code
     public static void main(String[] args)
     {
