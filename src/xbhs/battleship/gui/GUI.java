@@ -1,15 +1,8 @@
-<<<<<<< HEAD
 package xbhs.battleship.gui;
 
-<<<<<<< HEAD
 import javax.swing.JFrame;
-=======
-
-package xbhs.battleship.gui;
->>>>>>> master
-=======
 import processing.core.*;
->>>>>>> origin/GUI
+
 
 public class GUI extends PApplet {
 
