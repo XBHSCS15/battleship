@@ -32,8 +32,9 @@ public class Space
 		}
 	}
 	
-	public boolean hasBeenHit()
+	public boolean isHit()
 	{
+		ship.incrementHitCount();
 		return hit;
 	}
 }
