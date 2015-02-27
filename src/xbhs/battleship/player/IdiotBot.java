@@ -31,10 +31,10 @@ public class IdiotBot implements Player
     private boolean isValid(Move m, Space[][] grid)
     {
         // check if x coord is out of bounds
-        if ((int)m.getX()<0 || (int)m.getX()>=grid.length)
+        if (m.getX()<0 || m.getX()>=grid.length)
             return false;
         // check if y coord is out of bounds
-        else if ((int)m.getY()<0 || (int)m.getY()>=grid[0].length)
+        else if (m.getY()<0 || m.getY()>=grid[0].length)
             return false;
         // check if already fired here
         else if (!grid[(int)m.getX()][(int)m.getY()].isHit())
@@ -59,23 +59,48 @@ public class IdiotBot implements Player
     {
         int dartX;
         int dartY;
+        int dartDirX;
+        int dartDirY;
         Move m;
+        ShipPlacement placement;
         
         do {
             dartX = (int)(Math.random()*grid.length);
             dartY = (int)(Math.random()*grid[0].length);
             m = new Move(dartX, dartY);
-        } while (isValid(m, grid, ship));
+            // this makes a random x direction and y direction
+            dartDirX = (int)(Math.random()*2) - 1;
+            dartDirY = (int)(Math.random()*2) - 1;
+            
+            placement = new ShipPlacement(m, ship, dartX, dartY);
+        } while (!isValid(placement, grid));
         
-        ShipPlacement placement = new ShipPlacement(m, ship, dartX, dartY);
         return placement;
     }
     
-    private boolean isValid(Move m, Space[][] grid, Ship ship)
+    // check if the placement of one ship is valid
+    private boolean isValid(ShipPlacement p, Space[][] grid)
     {
-        // TODO: make sure ship placement is valid
-        // check if all pieces will stay in bounds,
-        // and only go through empty spaces
+        // series to check start of ship goes out of bounds
+        if (p.getStartingPoint().getX()<0 
+                || p.getStartingPoint().getX()>=grid.length)
+            return false;
+        else if (p.getStartingPoint().getY()<0 
+                || p.getStartingPoint().getY()>=grid[0].length)
+            return false;
+        Move start = new Move((int)p.getStartingPoint().getX(), 
+                              (int)p.getStartingPoint().getY());
+        Ship ship = p.getShip();
+        // I need a get size method for the ship
+        // series to check if end of ship goes out of bounds
+        if (start.getX()+p.getXdir()*ship.getSize() < 0
+                || start.getX()+p.getXdir()*ship.getSize() >= grid.length)
+            return false;
+        else if (start.getY()+p.getYdir()*ship.getSize() < 0
+                || start.getY()+p.getYdir()*ship.getSize() >= grid[0].length)
+            return false;
+        // series to check if spaces are empty
+        
         return true;
     }
     
