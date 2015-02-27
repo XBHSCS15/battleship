@@ -62,7 +62,7 @@ public class Network {
     }
     
     public static void main(String[] args){
-        Network network = new Network("http://example.com");
+        Network network = new Network("https://battleship-server-abyrne55.c9.io/hello.php");
         System.out.println(network.fireGET());
     }
 
