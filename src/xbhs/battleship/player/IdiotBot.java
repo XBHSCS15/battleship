@@ -45,9 +45,38 @@ public class IdiotBot implements Player
     
     public ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships)
     {
-        // TODO: method is not finished
         ShipPlacement[] shipPlacements = new ShipPlacement[ships.length];
+        
+        for (int i = 0; i < shipPlacements.length; i++)
+        {
+            shipPlacements[i] = oneShipPlacement(grid, ships[i]);
+        }
+        
         return shipPlacements;
+    }
+    
+    private ShipPlacement oneShipPlacement(Space[][] grid, Ship ship)
+    {
+        int dartX;
+        int dartY;
+        Move m;
+        
+        do {
+            dartX = (int)(Math.random()*grid.length);
+            dartY = (int)(Math.random()*grid[0].length);
+            m = new Move(dartX, dartY);
+        } while (isValid(m, grid, ship));
+        
+        ShipPlacement placement = new ShipPlacement(m, ship, dartX, dartY);
+        return placement;
+    }
+    
+    private boolean isValid(Move m, Space[][] grid, Ship ship)
+    {
+        // TODO: make sure ship placement is valid
+        // check if all pieces will stay in bounds,
+        // and only go through empty spaces
+        return true;
     }
     
     // some debug code
