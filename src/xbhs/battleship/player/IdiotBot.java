@@ -37,7 +37,7 @@ public class IdiotBot implements Player
         else if ((int)m.getY()<0 || (int)m.getY()>=grid[0].length)
             return false;
         // check if already fired here
-        else if (!grid[(int)m.getX()][(int)m.getY()].hasBeenHit())
+        else if (!grid[(int)m.getX()][(int)m.getY()].isHit())
             return false;
         
         return true;
