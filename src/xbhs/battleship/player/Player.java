@@ -3,6 +3,6 @@ import xbhs.battleship.game.*;
 
 public interface Player 
 {
-    Move[] getMove();
+    Move[] getMove(Space[][] grid);
     
 }
