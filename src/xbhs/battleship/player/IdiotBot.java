@@ -72,7 +72,7 @@ public class IdiotBot implements Player
             dartDirX = (int)(Math.random()*2) - 1;
             dartDirY = (int)(Math.random()*2) - 1;
             
-            placement = new ShipPlacement(m, ship, dartX, dartY);
+            placement = new ShipPlacement(m, ship, dartDirX, dartDirY);
         } while (!isValid(placement, grid));
         
         return placement;
@@ -91,7 +91,6 @@ public class IdiotBot implements Player
         Move start = new Move((int)p.getStartingPoint().getX(), 
                               (int)p.getStartingPoint().getY());
         Ship ship = p.getShip();
-        // I need a get size method for the ship
         // series to check if end of ship goes out of bounds
         if (start.getX()+p.getXdir()*ship.getSize() < 0
                 || start.getX()+p.getXdir()*ship.getSize() >= grid.length)
@@ -100,7 +99,13 @@ public class IdiotBot implements Player
                 || start.getY()+p.getYdir()*ship.getSize() >= grid[0].length)
             return false;
         // series to check if spaces are empty
-        
+        for (int i = 0; i < ship.getSize(); i++)
+        {
+            int row = (int)start.getX();
+            int col = (int)start.getY();
+            if (grid[row][col].hasShip())
+                return false;
+        }
         return true;
     }
     
