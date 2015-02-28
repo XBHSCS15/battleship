@@ -6,7 +6,7 @@ import xbhs.battleship.game.*;
  *
  * @author Faraaz
  */
-public class IdiotBot implements Player 
+public class IdiotBot extends ComputerPlayer 
 {
     public Move[] getMove(Space[][] grid)
     {
