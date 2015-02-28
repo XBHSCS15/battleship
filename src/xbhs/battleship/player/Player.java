@@ -3,6 +3,6 @@ import xbhs.battleship.game.*;
 
 public interface Player 
 {
-    Move[] getMove(Space[][] grid);
-    ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships);
+    public Move[] getMove(Space[][] grid);
+    public ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships);
 }
