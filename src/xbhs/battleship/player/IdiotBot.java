@@ -49,7 +49,14 @@ public class IdiotBot extends ComputerPlayer
         
         for (int i = 0; i < shipPlacements.length; i++)
         {
+            // need to place ships on fake board as I go
+            // need a copy constructor
             shipPlacements[i] = oneShipPlacement(grid, ships[i]);
+            try {
+                grid[(int)shipPlacements[i].getStartingPoint().getX()][(int)shipPlacements[i].getStartingPoint().getY()].addShip(shipPlacements[i].getShip());
+            } catch (ShipAlreadyThereException e) {
+                // lol @ Mohak
+            }
         }
         
         return shipPlacements;
