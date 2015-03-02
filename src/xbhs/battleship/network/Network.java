@@ -26,7 +26,7 @@ public class Network {
     public Network(String url) {
         this.url = url;
         charset = java.nio.charset.StandardCharsets.UTF_8.name();
-        param1 = "value1";
+        param1 = "eggli";
         param2 = "value2";
 
         try {
@@ -59,6 +59,15 @@ public class Network {
             Logger.getLogger(Network.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "err";
+    }
+    
+    public boolean checkConnection(){
+        try {
+            uplink = new URL(url).openConnection();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
     }
     
     public static void main(String[] args){
