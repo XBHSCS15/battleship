@@ -4,11 +4,27 @@
  * and open the template in the editor.
  */
 package xbhs.battleship.player;
+    
+import java.util.Scanner;
+import xbhs.battleship.game.*;
 
 /**
  *
- * @author Yusheng Feng
+ * @author Faraaz
  */
-public class HumanPlayer {
-    
+public class HumanPlayer extends NetworkPlayer
+{
+    public Move[] getMove(Space[][] grid)
+    {
+        Scanner keyboard = new Scanner(System.in);
+        int x = keyboard.nextInt();
+        int y = keyboard.nextInt();
+        Move[] coordinate = new Move[1];
+        coordinate[0] = new Move(x,y);
+        return coordinate;
+    }
+    public ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships)
+    {
+        return null;
+    }
 }
