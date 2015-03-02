@@ -1,6 +1,7 @@
 package xbhs.battleship.game;
 
 import xbhs.battleship.player.Player;
+import java.util.Arrays;
 
 /**
  * @author Mohak
@@ -86,9 +87,8 @@ public class Game
 
 	public void makeMove()
 	{
-
-		Move[] moves = thePlayers[currPlayer].getMove(currPlayer == 0 ? grid0
-				: grid1);
+		Move[] moves = thePlayers[currPlayer].getMove(currPlayer == 0 ? Arrays.copyOf(grid0, grid0.length)
+				: Arrays.copyOf(grid1, grid1.length));
 		for (int i = 0; i < moves.length; i++)
 		{
 			try

@@ -4,8 +4,9 @@ package xbhs.battleship.game;
  * @author Mohak
  *
  */
-public class Space
+public class Space implements java.io.Serializable 
 {
+	private static final long serialVersionUID = 1L;
 	private Ship ship;
 	private boolean hit;
 	
