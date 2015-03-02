@@ -19,6 +19,7 @@ public class GUI extends PApplet {
     {
       line(mouseX,mouseY,pmouseX,pmouseY);
     }
+<<<<<<< HEAD
   }
   
   public static void main(String args[]) 
@@ -26,3 +27,7 @@ public class GUI extends PApplet {
     PApplet.main(new String[] { "--present", "GUI" });
   }
 }
+=======
+    
+}
+>>>>>>> GameLogic
