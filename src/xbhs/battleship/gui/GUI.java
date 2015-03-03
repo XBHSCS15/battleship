@@ -1,14 +1,21 @@
 package xbhs.battleship.gui;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+
 import javax.swing.JFrame;
-import processing.core.*;
+
+import processing.core.PApplet;
 
 
 public class GUI extends PApplet {
 
   public void setup() 
   {
-    size(200,200);
+	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	int width = gd.getDisplayMode().getWidth();
+	int height = gd.getDisplayMode().getHeight();
+	size(width,height);
     background(0);
   }
 
