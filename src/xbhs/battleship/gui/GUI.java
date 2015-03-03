@@ -19,15 +19,11 @@ public class GUI extends PApplet {
     {
       line(mouseX,mouseY,pmouseX,pmouseY);
     }
-<<<<<<< HEAD
   }
   
   public static void main(String args[]) 
   {
-    PApplet.main(new String[] { "--present", "GUI" });
+    PApplet.main(new String[] { "--present", "xbhs.battleship.gui.GUI" });
   }
 }
-=======
-    
-}
->>>>>>> GameLogic
+

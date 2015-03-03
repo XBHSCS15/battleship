@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //Placeholder Class
 package xbhs.battleship.network;
 
@@ -75,13 +74,5 @@ public class Network {
         Network network = new Network("https://battleship-server-abyrne55.c9.io/hello.php");
         System.out.println(network.fireGET());
     }
-=======
-// Placeholder Class
-
-package xbhs.battleship.network;
-
-public class Network
-{
->>>>>>> GameLogic
 
 }
