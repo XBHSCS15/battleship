@@ -3,7 +3,10 @@ package xbhs.battleship.gui;
 import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.util.ArrayList;
 import java.util.Arrays;
+
+import javax.swing.JButton;
 
 import processing.core.PApplet;
 
@@ -13,6 +16,7 @@ public class GUI extends PApplet {
   int initWidth = gd.getDisplayMode().getWidth()/2;
   int initHeight = gd.getDisplayMode().getHeight()/2;
   boolean mousePressedLastFrame = false;
+  ArrayList<String> buttonTitles = new ArrayList<String>();
   /**
    * Placeholder variable stores if a grid space
    * should be colored to test click detection
@@ -25,6 +29,11 @@ public class GUI extends PApplet {
 		Arrays.fill(grid[i], false);
 	size(initWidth,initHeight);
     background(0);
+    /**
+    buttonTitles.add("A button");
+    buttonTitles.add("Another button");
+    buttonTitles.add("A third button");
+    */
   }
 
   @Override
@@ -34,6 +43,8 @@ public class GUI extends PApplet {
     int sideLength = getHeight();
     int startX = (getWidth() - sideLength) / 2;
     int delta = sideLength / 10;
+	// Fixes issues with truncation
+    sideLength = delta * 10;
 	if(mousePressed != mousePressedLastFrame && !mousePressedLastFrame)
 	{
 		int[] coords = getGridSquare(mouseX, mouseY);
@@ -52,6 +63,7 @@ public class GUI extends PApplet {
     	line(startX, i * delta, startX + sideLength, i * delta);
     	line(i * delta + startX, 0, i * delta + startX, sideLength);
     }
+    //addButtons();
   }
   
   /**
@@ -62,6 +74,8 @@ public class GUI extends PApplet {
 	int sideLength = getHeight();
 	int startX = (getWidth() - sideLength) / 2;
 	int delta = sideLength / 10;
+	// Fixes issues with truncation
+	sideLength = delta * 10;
 	if(x < startX || x > startX + sideLength)
 		return null;
 	int[] coords = new int[2];
@@ -90,6 +104,8 @@ public class GUI extends PApplet {
 	  int sideLength = getHeight();
 	  int startX = (getWidth() - sideLength) / 2;
 	  int delta = sideLength / 10;
+	  // Fixes issues with truncation
+	  sideLength = delta * 10;
 	  fill(color.getRGB());
 	  beginShape();
 	  	vertex((float)x * delta + startX, (float) y * delta);
@@ -97,6 +113,19 @@ public class GUI extends PApplet {
 	  	vertex((float)(x + 1) * delta + startX, (float) (y + 1) * delta);
 	  	vertex((float)(x + 1) * delta + startX, (float) y * delta);
 	  endShape();
+  }
+  
+  public void addButtons()
+  {
+	  int minX = 0, maxX = (getWidth() - getHeight()) / 2;
+	  int deltaY = getHeight()/buttonTitles.size();
+	  for(int i = 0; i < buttonTitles.size(); i++)
+		  addButton(minX, maxX, i * deltaY, i + 1 * deltaY, buttonTitles.get(i));
+  }
+  
+  public void addButton(int minX, int maxX, int minY, int maxY, String text)
+  {
+	  //TODO: Fill this out
   }
   
   public static void main(String args[]) 
