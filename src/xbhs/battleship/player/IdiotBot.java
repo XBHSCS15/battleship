@@ -52,10 +52,20 @@ public class IdiotBot extends ComputerPlayer
             // need to place ships on fake board as I go
             // need a copy constructor
             shipPlacements[i] = oneShipPlacement(grid, ships[i]);
-            try {
-                grid[(int)shipPlacements[i].getStartingPoint().getX()][(int)shipPlacements[i].getStartingPoint().getY()].addShip(shipPlacements[i].getShip());
-            } catch (ShipAlreadyThereException e) {
-                // lol @ Mohak
+            for (int j = 0; j < shipPlacements[i].getShip().getSize(); j++)
+            {
+		try 
+                {
+                    grid[shipPlacements[i]
+                        .getStartingPoint().x + shipPlacements[i].getXdir() * j]
+                        [shipPlacements[i].getStartingPoint().y
+                        + shipPlacements[i].getYdir() * j]
+                        .addShip(shipPlacements[i].getShip());
+                } catch (ShipAlreadyThereException e)
+                {
+                    System.err.print("ship already there bro");
+                    e.printStackTrace();
+                }
             }
         }
         
@@ -76,12 +86,13 @@ public class IdiotBot extends ComputerPlayer
             dartY = (int)(Math.random()*grid[0].length);
             m = new Move(dartX, dartY);
             // this makes a random x direction and y direction
-            dartDirX = (int)(Math.random()*2) - 1;
-            dartDirY = (int)(Math.random()*2) - 1;
+            // only one direction can be 1, other must be 0
+            dartDirX = (int)(Math.random()*2);
+            dartDirY = (dartDirX+1)%2;
             
             placement = new ShipPlacement(m, ship, dartDirX, dartDirY);
         } while (!isValid(placement, grid));
-        
+        // add method to place ship in the space
         return placement;
     }
     
@@ -108,9 +119,9 @@ public class IdiotBot extends ComputerPlayer
         // series to check if spaces are empty
         for (int i = 0; i < ship.getSize(); i++)
         {
-            int row = (int)start.getX();
-            int col = (int)start.getY();
-            if (grid[row][col].hasShip())
+            int x = (int)start.getX() + i*p.getXdir();
+            int y = (int)start.getY() + i*p.getYdir();
+            if (grid[x][y].hasShip())
                 return false;
         }
         return true;
@@ -119,15 +130,25 @@ public class IdiotBot extends ComputerPlayer
     // some debug code
     public static void main(String[] args)
     {
-        Space[][] grid = new Space[10][10];
+        Space[][] grid = new Space[4][10]; // why does one dimension need to be 1 longer than ship length?
+        Ship[] ships = {
+            new Ship(9), new Ship(9), new Ship(9), new Ship(9)
+        }; // check the adding direction for bug
         IdiotBot idiot = new IdiotBot();
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid[0].length; j++)
                 grid[i][j] = new Space();
-        System.out.println(idiot.getMove(grid));
-        System.out.println(idiot.getMove(grid));
-        System.out.println(idiot.getMove(grid));
-        System.out.println(idiot.getMove(grid));
+        ShipPlacement[] placements = idiot.getPlacement(grid, ships);
+        for (int i = 0; i < placements.length; i++)
+            System.out.println("Ship" + i + ": " 
+                        + placements[i].getStartingPoint()
+                        + ", " + placements[i].getXdir() 
+                        + ", " + placements[i].getYdir()
+                        + "; " + placements[i].getShip().getSize());
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
         
         //System.out.println(dartX + ", " + dartY);
     }

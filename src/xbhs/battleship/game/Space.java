@@ -33,7 +33,7 @@ public class Space
 	
 	public void addShip(Ship ship) throws ShipAlreadyThereException
 	{
-		if(ship == null)
+		if(this.ship == null)
 		{
 			this.ship = ship;
 		} else
