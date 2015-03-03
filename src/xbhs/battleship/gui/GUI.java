@@ -3,18 +3,15 @@ package xbhs.battleship.gui;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-import javax.swing.JFrame;
-
 import processing.core.PApplet;
-
 
 public class GUI extends PApplet {
 
   public void setup() 
   {
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-	int width = gd.getDisplayMode().getWidth();
-	int height = gd.getDisplayMode().getHeight();
+	int width = gd.getDisplayMode().getWidth()/2;
+	int height = gd.getDisplayMode().getHeight()/2;
 	size(width,height);
     background(0);
   }
@@ -30,6 +27,6 @@ public class GUI extends PApplet {
   
   public static void main(String args[]) 
   {
-    PApplet.main(new String[] { "--present", "xbhs.battleship.gui.GUI" });
+    PApplet.main("xbhs.battleship.gui.GUI");
   }
 }
