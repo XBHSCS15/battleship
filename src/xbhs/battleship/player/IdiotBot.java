@@ -14,6 +14,12 @@ import xbhs.battleship.game.*;
  */
 public class IdiotBot extends ComputerPlayer 
 {
+    /** 
+     *  Returns a move, a.k.a. a place to fire a missile. It will 
+     *  not fire in an area that has already been fired at.
+     * 
+     *  @param grid
+     */
     public Move[] getMove(Space[][] grid)
     {
         // "dart" signifies random value
@@ -39,6 +45,15 @@ public class IdiotBot extends ComputerPlayer
         return moves;
     }
     
+    /**
+     * Returns a boolean that determines if the potential move given is valid.
+     * Checks if out of bounds or if already fired in that space.
+     * This is a helper method for the getMove() method.
+     * 
+     * @param m
+     * @param grid
+     * @return 
+     */
     private boolean isValid(Move m, Space[][] grid)
     {
         // check if x coord is out of bounds
@@ -54,6 +69,15 @@ public class IdiotBot extends ComputerPlayer
         return true;
     }
     
+    /**
+     * Checks the board and returns an array of ship placements to determine 
+     * where ships should be placed to begin the game. This is randomly 
+     * generated.
+     * 
+     * @param grid
+     * @param ships
+     * @return 
+     */
     public ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships)
     {
         ShipPlacement[] shipPlacements = new ShipPlacement[ships.length];
@@ -82,6 +106,14 @@ public class IdiotBot extends ComputerPlayer
         return shipPlacements;
     }
     
+    /**
+     * A helper method for the getPlacement() method that randomly places one
+     * ship on the board.
+     * 
+     * @param grid
+     * @param ship
+     * @return 
+     */
     private ShipPlacement oneShipPlacement(Space[][] grid, Ship ship)
     {
         int dartX;
@@ -107,6 +139,14 @@ public class IdiotBot extends ComputerPlayer
     }
     
     // check if the placement of one ship is valid
+    /**
+     * A helper method for the oneShipPlacement() method that checks if a 
+     * potential ship placement is valid.
+     * 
+     * @param p
+     * @param grid
+     * @return 
+     */
     private boolean isValid(ShipPlacement p, Space[][] grid)
     {
         // series to check start of ship goes out of bounds
