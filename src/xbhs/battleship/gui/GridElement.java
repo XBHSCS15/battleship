@@ -74,13 +74,21 @@ public class GridElement extends GUIElement
 			return null;
 		int[] coords = new int[2];
 		for(int i = 0; i < 11; i++)
-			if(x < startX + (i * delta))
+			if(i == 11)
+			{
+				coords[1] = 11;
+			}
+			else if(x <= startX + (i * delta))
 			{
 				coords[0] = i;
 				break;
 			}
 		for(int i = 0; i < 11; i++)
-			if(y < i * delta)
+			if(i == 11)
+			{
+				coords[1] = 11;
+			}
+			else if(y <= i * delta)
 			{
 				coords[1] = i;
 				break;
