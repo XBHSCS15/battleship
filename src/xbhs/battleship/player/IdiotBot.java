@@ -5,6 +5,16 @@ import xbhs.battleship.game.*;
 /**
  *
  * @author Faraaz
+ * 
+ * BUGS: 
+ * the getPlacement() method places randomly, one at a time.
+ * It cannot retry if it runs out of room. Make sure the board size is large 
+ * enough so that ships can be placed in any arrangement without running out of 
+ * space for the last ship.
+ * 
+ * for some reason, the bot does not place ships that go horizontally and end 
+ * in the last column. There is probably some looping bug in the code that I
+ * have yet to find.
  */
 public class IdiotBot extends ComputerPlayer 
 {
@@ -23,6 +33,7 @@ public class IdiotBot extends ComputerPlayer
             dartX = (int)(Math.random()*grid.length);
             dartY = (int)(Math.random()*grid[0].length);
             moves[0] = new Move(dartX, dartY);
+            // call hit method here
         } while (isValid(moves[0], grid));
         
         return moves;
@@ -50,7 +61,6 @@ public class IdiotBot extends ComputerPlayer
         for (int i = 0; i < shipPlacements.length; i++)
         {
             // need to place ships on fake board as I go
-            // need a copy constructor
             shipPlacements[i] = oneShipPlacement(grid, ships[i]);
             for (int j = 0; j < shipPlacements[i].getShip().getSize(); j++)
             {
@@ -92,7 +102,7 @@ public class IdiotBot extends ComputerPlayer
             
             placement = new ShipPlacement(m, ship, dartDirX, dartDirY);
         } while (!isValid(placement, grid));
-        // add method to place ship in the space
+
         return placement;
     }
     
@@ -130,9 +140,9 @@ public class IdiotBot extends ComputerPlayer
     // some debug code
     public static void main(String[] args)
     {
-        Space[][] grid = new Space[4][10]; // why does one dimension need to be 1 longer than ship length?
+        Space[][] grid = new Space[4][1]; // why does one dimension need to be 1 longer than ship length?
         Ship[] ships = {
-            new Ship(9), new Ship(9), new Ship(9), new Ship(9)
+            new Ship(2)//, new Ship(3), new Ship(3), new Ship(4), new Ship(5)
         }; // check the adding direction for bug
         IdiotBot idiot = new IdiotBot();
         for (int i = 0; i < grid.length; i++)
@@ -150,6 +160,19 @@ public class IdiotBot extends ComputerPlayer
         System.out.println(idiot.getMove(grid)[0]);
         System.out.println(idiot.getMove(grid)[0]);
         
+        for (int i = 0; i < grid.length; i++)
+        {
+            for (int j = 0; j < grid[0].length; j++)
+            {
+                if (grid[i][j].hasShip())
+                    System.out.print("X");
+                else
+                    System.out.print("-");
+                
+                System.out.print(" ");
+            }
+            System.out.print("\n");
+        }
         //System.out.println(dartX + ", " + dartY);
     }
 }
