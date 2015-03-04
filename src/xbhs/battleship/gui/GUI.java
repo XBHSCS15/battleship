@@ -15,14 +15,15 @@ public class GUI extends PApplet
 	int initWidth = gd.getDisplayMode().getWidth()/2;
 	int initHeight = gd.getDisplayMode().getHeight()/2;
 	boolean mousePressedLastFrame = false;
-
+	Game g;
+	
 	@Override
 	public void setup() 
 	{
+		g = new Game(10,10, this);
 		list = new ArrayList<GUIElement>();
 		size(initWidth,initHeight);
 		background(0);
-		initGUIElements();
 		for(int i = 0; i < list.size(); i++)
 			list.get(i).init();
 	}
@@ -55,14 +56,14 @@ public class GUI extends PApplet
 		return temp.toArray();
 	}
 	
-	private void initGUIElements()
+	public static void addElementToList(GUIElement e)
 	{
-		addElement(new GridElement((getWidth() - getHeight()) / 2, 0, (getWidth() - getHeight()) / 2 + getHeight(), getHeight(), this, Integer.MAX_VALUE));
+		addElement(e);
 	}
 
 	public static void main(String args[]) 
 	{
 		PApplet.main("xbhs.battleship.gui.GUI");
-		Game.init();
 	}
+	
 }

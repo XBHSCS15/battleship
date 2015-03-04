@@ -1,5 +1,7 @@
 package xbhs.battleship.game;
 
+import xbhs.battleship.gui.GUI;
+import xbhs.battleship.gui.GridElement;
 import xbhs.battleship.player.IdiotBot;
 import xbhs.battleship.player.Player;
 
@@ -15,30 +17,28 @@ public class Game
 	private Ship[] ships;
 	private Player[] thePlayers;
 	private int currPlayer;
-
-	public Game(int rowSize, int colSize)
+	private GUI gui;
+	
+	public Game(int rowSize, int colSize, GUI g)
 	{
+		gui = g;
+		
 		thePlayers = new Player[2];
 
 		currPlayer = 0;
 
 		grid0 = new Space[rowSize][colSize];
 		grid1 = new Space[rowSize][colSize];
+		
+		GUI.addElementToList(new GridElement(0, 0, gui.displayWidth/2, gui.displayHeight , gui, grid0));
+		GUI.addElementToList(new GridElement(gui.displayWidth/2, 0, gui.displayWidth, gui.displayHeight , gui, grid1));
+		
 		for (int i = 0; i < grid0.length; i++)
 			for (int j = 0; j < grid0[0].length; j++)
 			{
-				grid0[i][j] = new Space();
-				grid1[i][j] = new Space();
+				grid0[i][j] = new Space(thePlayers[0]);
+				grid1[i][j] = new Space(thePlayers[1]);
 			}
-
-		ships = new Ship[5];
-		ships[0] = new Ship(2);
-		ships[1] = new Ship(3);
-		ships[2] = new Ship(3);
-		ships[3] = new Ship(4);
-		ships[4] = new Ship(5);
-		placeShips(grid1, thePlayers[0]);
-		placeShips(grid0, thePlayers[1]);
 	}
 
 	private void placeShips(Space[][] grid, Player player)
@@ -66,6 +66,11 @@ public class Game
 	public int getCurrPlayer()
 	{
 		return currPlayer;
+	}
+	
+	public Player getPlayerObject()
+	{
+		return thePlayers[getCurrPlayer()];
 	}
 
 	public void setCurrPlayer(int currPlayer)
@@ -105,12 +110,4 @@ public class Game
 		
 		currPlayer = (currPlayer + 1) % 2;
 	}
-	
-    public static void init()
-    {
-        Space[][] grid = new Space[4][1];
-        Ship[] ships = {
-            new Ship(2)
-        }; 
-    }
 }

@@ -1,5 +1,7 @@
 package xbhs.battleship.game;
 
+import xbhs.battleship.player.Player;
+
 /**
  * @author Mohak
  *
@@ -9,11 +11,13 @@ public class Space implements java.io.Serializable
 	private static final long serialVersionUID = 1L;
 	private Ship ship;
 	private boolean hit;
+	private Player player;
 
-	public Space()
+	public Space(Player p)
 	{
 		ship = null;
 		hit = false;
+		player = p;
 	}
 
 	public void hit()
@@ -49,5 +53,10 @@ public class Space implements java.io.Serializable
 	public boolean isHit()
 	{
 		return hit;
+	}
+	
+	public Player getPlayer()
+	{
+		return player;
 	}
 }

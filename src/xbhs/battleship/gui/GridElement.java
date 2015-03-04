@@ -3,22 +3,21 @@ package xbhs.battleship.gui;
 import java.awt.Color;
 import java.util.Arrays;
 
+import xbhs.battleship.game.Space;
+
 public class GridElement extends GUIElement
 {
-	/**
-	 * Placeholder variable stores if a grid space
-	 * should be colored to test click detection
-	 */
-	boolean[][] grid = new boolean[10][10];
-
-	public GridElement(int minX, int minY, int maxX, int maxY, GUI gui)
+	private Space[][] grid;
+	public GridElement(int minX, int minY, int maxX, int maxY, GUI gui, Space[][] grid)
 	{
 		super(minX, minY, maxX, maxY, gui);
+		this.grid = grid;
 	}
 	
-	public GridElement(int minX, int minY, int maxX, int maxY, GUI gui, int renderPriority)
+	public GridElement(int minX, int minY, int maxX, int maxY, GUI gui, int renderPriority, Space[][] grid)
 	{
 		super(minX, minY, maxX, maxY, gui, renderPriority);
+		this.grid = grid;
 	}
 
 	@Override
@@ -36,7 +35,9 @@ public class GridElement extends GUIElement
 		int delta = sideLength / 10;
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 10; j++)
-				if(grid[i][j])
+				if(grid[i][j].hasShip())
+					fillSquare(i, j, Color.WHITE);
+				else if(grid[i][j].isHit())
 					fillSquare(i, j, Color.RED);
 				else
 					fillSquare(i, j, getGUI().getForeground());
@@ -55,11 +56,14 @@ public class GridElement extends GUIElement
 	@Override
 	public void onClicked(int x, int y) 
 	{
+		if(!((getGUI().g.getPlayerObject()) == grid[0][0].getPlayer()))
+			return;
 		if(getGUI().mousePressed != getGUI().mousePressedLastFrame && !getGUI().mousePressedLastFrame)
 		{
 			int[] coords = getGridSquare(getGUI().mouseX, getGUI().mouseY);
 			if(coords != null)
-				grid[coords[0]][coords[1]] = !grid[coords[0]][coords[1]];
+				if(!grid[coords[0]][coords[1]].isHit())
+					grid[coords[0]][coords[1]].hit();
 		}
 	}
 
