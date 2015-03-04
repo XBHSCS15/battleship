@@ -34,6 +34,7 @@ public class GUI extends PApplet {
     int sideLength = getHeight();
     int startX = (getWidth() - sideLength) / 2;
     int delta = sideLength / 10;
+    sideLength = delta*10;
 	if(mousePressed != mousePressedLastFrame && !mousePressedLastFrame)
 	{
 		int[] coords = getGridSquare(mouseX, mouseY);
@@ -62,6 +63,7 @@ public class GUI extends PApplet {
 	int sideLength = getHeight();
 	int startX = (getWidth() - sideLength) / 2;
 	int delta = sideLength / 10;
+        sideLength = delta*10;
 	if(x < startX || x > startX + sideLength)
 		return null;
 	int[] coords = new int[2];
@@ -90,6 +92,7 @@ public class GUI extends PApplet {
 	  int sideLength = getHeight();
 	  int startX = (getWidth() - sideLength) / 2;
 	  int delta = sideLength / 10;
+          sideLength = delta*10;
 	  fill(color.getRGB());
 	  beginShape();
 	  	vertex((float)x * delta + startX, (float) y * delta);
