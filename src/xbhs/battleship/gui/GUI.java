@@ -42,7 +42,6 @@ public class GUI extends PApplet
     int sideLength = getHeight();
     int startX = (getWidth() - sideLength) / 2;
     int delta = sideLength / 10;
-    sideLength = delta*10;
 	// Fixes issues with truncation
     sideLength = delta * 10;
 	if(mousePressed != mousePressedLastFrame && !mousePressedLastFrame)
@@ -74,7 +73,6 @@ public class GUI extends PApplet
 	int sideLength = getHeight();
 	int startX = (getWidth() - sideLength) / 2;
 	int delta = sideLength / 10;
-        sideLength = delta*10;
 	// Fixes issues with truncation
 	sideLength = delta * 10;
 	if(x < startX || x > startX + sideLength)
@@ -105,7 +103,6 @@ public class GUI extends PApplet
 	  int sideLength = getHeight();
 	  int startX = (getWidth() - sideLength) / 2;
 	  int delta = sideLength / 10;
-          sideLength = delta*10;
 	  // Fixes issues with truncation
 	  sideLength = delta * 10;
 	  fill(color.getRGB());
