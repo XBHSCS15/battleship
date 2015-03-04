@@ -17,7 +17,6 @@ public class IdiotBot extends ComputerPlayer
     public Move[] getMove(Space[][] grid)
     {
         // "dart" signifies random value
-        // how are we defining x and y?
         int dartX;
         int dartY;
         
@@ -141,9 +140,9 @@ public class IdiotBot extends ComputerPlayer
     // some debug code
     public static void main(String[] args)
     {
-        Space[][] grid = new Space[2][1]; // why does one dimension need to be 1 longer than ship length?
+        Space[][] grid = new Space[10][10];
         Ship[] ships = {
-            new Ship(2)//, new Ship(3), new Ship(3), new Ship(4), new Ship(5)
+            new Ship(2), new Ship(3), new Ship(3), new Ship(4), new Ship(5)
         }; 
         IdiotBot idiot = new IdiotBot();
         for (int i = 0; i < grid.length; i++)
@@ -172,14 +171,20 @@ public class IdiotBot extends ComputerPlayer
         }
         System.out.println(idiot.getMove(grid)[0]);
         System.out.println(idiot.getMove(grid)[0]);
-        //System.out.println(idiot.getMove(grid)[0]);
-        //System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
+        System.out.println(idiot.getMove(grid)[0]);
         
         for (int i = 0; i < grid.length; i++)
         {
             for (int j = 0; j < grid[0].length; j++)
             {
-                if (grid[i][j].isHit())
+                if (grid[i][j].isHit() && grid[i][j].hasShip())
+                    System.out.print("O");
+                else if (grid[i][j].isHit())
                     System.out.print("X");
                 else 
                     System.out.print("-");
