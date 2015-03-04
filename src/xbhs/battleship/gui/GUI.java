@@ -5,12 +5,11 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import javax.swing.JButton;
-
 import processing.core.PApplet;
 
-public class GUI extends PApplet {
+public class GUI extends PApplet 
+{
  
   GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
   int initWidth = gd.getDisplayMode().getWidth()/2;
@@ -43,12 +42,9 @@ public class GUI extends PApplet {
     int sideLength = getHeight();
     int startX = (getWidth() - sideLength) / 2;
     int delta = sideLength / 10;
-<<<<<<< HEAD
     sideLength = delta*10;
-=======
 	// Fixes issues with truncation
     sideLength = delta * 10;
->>>>>>> origin/GUI
 	if(mousePressed != mousePressedLastFrame && !mousePressedLastFrame)
 	{
 		int[] coords = getGridSquare(mouseX, mouseY);
@@ -78,12 +74,9 @@ public class GUI extends PApplet {
 	int sideLength = getHeight();
 	int startX = (getWidth() - sideLength) / 2;
 	int delta = sideLength / 10;
-<<<<<<< HEAD
         sideLength = delta*10;
-=======
 	// Fixes issues with truncation
 	sideLength = delta * 10;
->>>>>>> origin/GUI
 	if(x < startX || x > startX + sideLength)
 		return null;
 	int[] coords = new int[2];
@@ -112,12 +105,9 @@ public class GUI extends PApplet {
 	  int sideLength = getHeight();
 	  int startX = (getWidth() - sideLength) / 2;
 	  int delta = sideLength / 10;
-<<<<<<< HEAD
           sideLength = delta*10;
-=======
 	  // Fixes issues with truncation
 	  sideLength = delta * 10;
->>>>>>> origin/GUI
 	  fill(color.getRGB());
 	  beginShape();
 	  	vertex((float)x * delta + startX, (float) y * delta);
