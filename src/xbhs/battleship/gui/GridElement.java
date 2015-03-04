@@ -10,7 +10,7 @@ public class GridElement extends GUIElement
 	 * should be colored to test click detection
 	 */
 	boolean[][] grid = new boolean[10][10];
-	
+
 	public GridElement(int minX, int minY, int maxX, int maxY, GUI gui)
 	{
 		super(minX, minY, maxX, maxY, gui);
@@ -22,19 +22,19 @@ public class GridElement extends GUIElement
 		for(int i = 0; i < 10; i++)
 			Arrays.fill(grid[i], false);
 	}
-	
+
 	@Override
 	public void drawElement() 
 	{
 		int sideLength = getCoords()[2][0] - getCoords()[0][0];
 		int startX = getCoords()[0][0];
 		int delta = sideLength / 10;
-	    for(int i = 0; i < 10; i++)
-	    	for(int j = 0; j < 10; j++)
-	    		if(grid[i][j])
-	    			fillSquare(i, j, Color.RED);
-	    		else
-	    			fillSquare(i, j, getGUI().getForeground());
+		for(int i = 0; i < 10; i++)
+			for(int j = 0; j < 10; j++)
+				if(grid[i][j])
+					fillSquare(i, j, Color.RED);
+				else
+					fillSquare(i, j, getGUI().getForeground());
 		for(int i = 0; i < 11; i++)
 		{
 			if(i == 11)
