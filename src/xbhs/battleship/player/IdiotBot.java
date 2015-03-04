@@ -137,42 +137,4 @@ public class IdiotBot extends ComputerPlayer
         }
         return true;
     }
-    
-    // some debug code
-    public static void main(String[] args)
-    {
-        Space[][] grid = new Space[4][1]; // why does one dimension need to be 1 longer than ship length?
-        Ship[] ships = {
-            new Ship(2)//, new Ship(3), new Ship(3), new Ship(4), new Ship(5)
-        }; 
-        IdiotBot idiot = new IdiotBot();
-        for (int i = 0; i < grid.length; i++)
-            for (int j = 0; j < grid[0].length; j++)
-                grid[i][j] = new Space();
-        ShipPlacement[] placements = idiot.getPlacement(grid, ships);
-        for (int i = 0; i < placements.length; i++)
-            System.out.println("Ship" + i + ": " 
-                        + placements[i].getStartingPoint()
-                        + ", " + placements[i].getXdir() 
-                        + ", " + placements[i].getYdir()
-                        + "; " + placements[i].getShip().getSize());
-        
-        for (int i = 0; i < grid.length; i++)
-        {
-            for (int j = 0; j < grid[0].length; j++)
-            {
-                if (grid[i][j].hasShip())
-                    System.out.print("X");
-                else
-                    System.out.print("-");
-                
-                System.out.print(" ");
-            }
-            System.out.print("\n");
-        }
-        System.out.println(idiot.getMove(grid)[0]);
-        System.out.println(idiot.getMove(grid)[0]);
-        System.out.println(idiot.getMove(grid)[0]);
-        System.out.println(idiot.getMove(grid)[0]);
-    }
 }

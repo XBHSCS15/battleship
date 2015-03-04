@@ -1,6 +1,8 @@
 package xbhs.battleship.game;
 
+import xbhs.battleship.player.IdiotBot;
 import xbhs.battleship.player.Player;
+
 import java.util.Arrays;
 
 /**
@@ -103,4 +105,12 @@ public class Game
 		
 		currPlayer = (currPlayer + 1) % 2;
 	}
+	
+    public static void main(String[] args)
+    {
+        Space[][] grid = new Space[4][1];
+        Ship[] ships = {
+            new Ship(2)
+        }; 
+    }
 }
