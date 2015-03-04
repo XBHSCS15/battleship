@@ -1,7 +1,8 @@
-//Placeholder Class
+// Placeholder Class
 
 package xbhs.battleship.network;
-	
-public class Network {
-	
+
+public class Network
+{
+
 }
