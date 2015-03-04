@@ -23,8 +23,6 @@ public class GridElement extends GUIElement
 	@Override
 	public void init() 
 	{
-		for(int i = 0; i < 10; i++)
-			Arrays.fill(grid[i], false);
 	}
 
 	@Override
@@ -32,7 +30,7 @@ public class GridElement extends GUIElement
 	{
 		int sideLength = getCoords()[2][0] - getCoords()[0][0];
 		int startX = getCoords()[0][0];
-		int delta = sideLength / 10;
+		int delta = sideLength / 10;		
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 10; j++)
 				if(grid[i][j].hasShip())

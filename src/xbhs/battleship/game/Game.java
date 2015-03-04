@@ -30,8 +30,8 @@ public class Game
 		grid0 = new Space[rowSize][colSize];
 		grid1 = new Space[rowSize][colSize];
 		
-		GUI.addElementToList(new GridElement(0, 0, gui.displayWidth/2, gui.displayHeight , gui, grid0));
-		GUI.addElementToList(new GridElement(gui.displayWidth/2, 0, gui.displayWidth, gui.displayHeight , gui, grid1));
+		GUI.addElementToList(new GridElement(0 + 10, 0 + 10, gui.getWidth()/2 - 10, gui.getHeight() - 10 , gui, grid0));
+		GUI.addElementToList(new GridElement(gui.getWidth()/2 + 10, 0 + 10, gui.getWidth() - 10, gui.getHeight() - 10 , gui, grid1));
 		
 		for (int i = 0; i < grid0.length; i++)
 			for (int j = 0; j < grid0[0].length; j++)
