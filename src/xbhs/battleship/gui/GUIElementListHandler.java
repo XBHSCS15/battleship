@@ -43,6 +43,11 @@ public class GUIElementListHandler
 
 	public static void addElement(GUIElement e)
 	{
+		if(list.size() == 0)
+		{
+			list.add(e);
+			return;
+		}
 		for(int i = 0; i < list.size(); i++)
 			if(e.getRenderPriority() < list.get(i).getRenderPriority())
 			{
