@@ -106,7 +106,7 @@ public class Game
 		currPlayer = (currPlayer + 1) % 2;
 	}
 	
-    public static void main(String[] args)
+    public static void init()
     {
         Space[][] grid = new Space[4][1];
         Ship[] ships = {
