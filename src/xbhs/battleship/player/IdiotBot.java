@@ -11,10 +11,6 @@ import xbhs.battleship.game.*;
  * It cannot retry if it runs out of room. Make sure the board size is large 
  * enough so that ships can be placed in any arrangement without running out of 
  * space for the last ship.
- * 
- * for some reason, the bot does not place ships that go horizontally and end 
- * in the last column. There is probably some looping bug in the code that I
- * have yet to find.
  */
 public class IdiotBot extends ComputerPlayer 
 {
@@ -33,9 +29,13 @@ public class IdiotBot extends ComputerPlayer
             dartX = (int)(Math.random()*grid.length);
             dartY = (int)(Math.random()*grid[0].length);
             moves[0] = new Move(dartX, dartY);
-        } while (isValid(moves[0], grid));
+        } while (!isValid(moves[0], grid));
         
-        grid[dartX][dartY].hit();        
+        try {
+            grid[dartX][dartY].hit();
+        } catch (NullPointerException e) {
+            // no ship here
+        }
         
         return moves;
     }
@@ -49,7 +49,7 @@ public class IdiotBot extends ComputerPlayer
         else if (m.getY()<0 || m.getY()>=grid[0].length)
             return false;
         // check if already fired here
-        else if (!grid[(int)m.getX()][(int)m.getY()].isHit())
+        else if (grid[(int)m.getX()][(int)m.getY()].isHit())
             return false;
         
         return true;
@@ -122,10 +122,10 @@ public class IdiotBot extends ComputerPlayer
         Ship ship = p.getShip();
         // series to check if end of ship goes out of bounds
         if (start.getX()+p.getXdir()*ship.getSize() < 0
-                || start.getX()+p.getXdir()*ship.getSize() >= grid.length)
+                || start.getX()+p.getXdir()*ship.getSize() > grid.length)
             return false;
         else if (start.getY()+p.getYdir()*ship.getSize() < 0
-                || start.getY()+p.getYdir()*ship.getSize() >= grid[0].length)
+                || start.getY()+p.getYdir()*ship.getSize() > grid[0].length)
             return false;
         // series to check if spaces are empty
         for (int i = 0; i < ship.getSize(); i++)
@@ -141,7 +141,7 @@ public class IdiotBot extends ComputerPlayer
     // some debug code
     public static void main(String[] args)
     {
-        Space[][] grid = new Space[4][1]; // why does one dimension need to be 1 longer than ship length?
+        Space[][] grid = new Space[2][1]; // why does one dimension need to be 1 longer than ship length?
         Ship[] ships = {
             new Ship(2)//, new Ship(3), new Ship(3), new Ship(4), new Ship(5)
         }; 
@@ -172,7 +172,21 @@ public class IdiotBot extends ComputerPlayer
         }
         System.out.println(idiot.getMove(grid)[0]);
         System.out.println(idiot.getMove(grid)[0]);
-        System.out.println(idiot.getMove(grid)[0]);
-        System.out.println(idiot.getMove(grid)[0]);
+        //System.out.println(idiot.getMove(grid)[0]);
+        //System.out.println(idiot.getMove(grid)[0]);
+        
+        for (int i = 0; i < grid.length; i++)
+        {
+            for (int j = 0; j < grid[0].length; j++)
+            {
+                if (grid[i][j].isHit())
+                    System.out.print("X");
+                else 
+                    System.out.print("-");
+                
+                System.out.print(" ");
+            }
+            System.out.print("\n");
+        }
     }
 }

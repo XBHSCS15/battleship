@@ -18,8 +18,8 @@ public class Space implements java.io.Serializable
 	
 	public void hit()
 	{
+                hit = true;
 		ship.incrementHitCount();
-		hit = true;
 	}
 	
 	public boolean hasShip()
