@@ -15,6 +15,11 @@ public class GridElement extends GUIElement
 	{
 		super(minX, minY, maxX, maxY, gui);
 	}
+	
+	public GridElement(int minX, int minY, int maxX, int maxY, GUI gui, int renderPriority)
+	{
+		super(minX, minY, maxX, maxY, gui, renderPriority);
+	}
 
 	@Override
 	public void init() 

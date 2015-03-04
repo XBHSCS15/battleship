@@ -4,11 +4,18 @@ public abstract class GUIElement
 {
 	int[][] coords;
 	GUI gui;
+	int priority;
 
 	public GUIElement(int minX, int minY, int maxX, int maxY, GUI gui)
 	{
+		this(minX, minY, maxX, maxY, gui, 0);
+	}
+	
+	public GUIElement(int minX, int minY, int maxX, int maxY, GUI gui, int renderPriority)
+	{
 		coords = new int[][]{{minX , minY} , {minX , maxY} , {maxX , maxY} , {maxX , minY}};
 		this.gui = gui;
+		priority = renderPriority;
 	}
 
 	public abstract void init();
@@ -49,5 +56,15 @@ public abstract class GUIElement
 	protected GUI getGUI()
 	{
 		return gui;
+	}
+	
+	public int getRenderPriority()
+	{
+		return priority;
+	}
+	
+	public void setRenderPriority(int i)
+	{
+		priority = i;
 	}
 }
