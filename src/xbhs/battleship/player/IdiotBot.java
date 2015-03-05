@@ -6,6 +6,10 @@ import xbhs.battleship.game.*;
  *
  * @author Faraaz
  * 
+ * This is a class that acts as a Player and returns a move and placement
+ * of ships. Both are randomly generated; there is no real "game strategy"
+ * involved with this AI. Hence the name IdiotBot.
+ * 
  * BUGS: 
  * the getPlacement() method places randomly, one at a time.
  * It cannot retry if it runs out of room. Make sure the board size is large 
@@ -137,8 +141,7 @@ public class IdiotBot extends ComputerPlayer
 
         return placement;
     }
-    
-    // check if the placement of one ship is valid
+
     /**
      * A helper method for the oneShipPlacement() method that checks if a 
      * potential ship placement is valid.
