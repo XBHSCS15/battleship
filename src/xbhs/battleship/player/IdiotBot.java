@@ -176,7 +176,6 @@ public class IdiotBot extends ComputerPlayer
         }
         return true;
     }
-<<<<<<< HEAD
     
     // some debug code
     public static void main(String[] args)
@@ -188,7 +187,7 @@ public class IdiotBot extends ComputerPlayer
         IdiotBot idiot = new IdiotBot();
         for (int i = 0; i < grid.length; i++)
             for (int j = 0; j < grid[0].length; j++)
-                grid[i][j] = new Space();
+                grid[i][j] = new Space(idiot);
         ShipPlacement[] placements = idiot.getPlacement(grid, ships);
         for (int i = 0; i < placements.length; i++)
             System.out.println("Ship" + i + ": " 
@@ -235,6 +234,4 @@ public class IdiotBot extends ComputerPlayer
             System.out.print("\n");
         }
     }
-=======
->>>>>>> origin/master
 }

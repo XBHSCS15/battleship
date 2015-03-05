@@ -22,16 +22,13 @@ public class Space implements java.io.Serializable
 
 	public void hit()
 	{
-<<<<<<< HEAD
                 hit = true;
 		ship.incrementHitCount();
-=======
 		if (hit == false)
 		{
 			ship.incrementHitCount();
 			hit = true;
 		}
->>>>>>> origin/master
 	}
 
 	public boolean hasShip()
