@@ -30,6 +30,7 @@ public class GridElement extends GUIElement
 	{
 		int sideLength = getCoords()[2][0] - getCoords()[0][0];
 		int startX = getCoords()[0][0];
+		int startY = getCoords()[0][1];
 		int delta = sideLength / 10;		
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 10; j++)
@@ -46,8 +47,8 @@ public class GridElement extends GUIElement
 				getGUI().line(getCoords()[0][0], getCoords()[0][1], getCoords()[3][0], getCoords()[3][1]);
 				getGUI().line(getCoords()[2][0], getCoords()[2][1], getCoords()[3][0], getCoords()[3][1]);
 			}
-			getGUI().line(startX, i * delta, startX + sideLength, i * delta);
-			getGUI().line(i * delta + startX, 0, i * delta + startX, sideLength);
+			getGUI().line(startX, i * delta + startY, startX + sideLength, i * delta + startY);
+			getGUI().line(i * delta + startX, startY, i * delta + startX, sideLength + startY);
 		}
 	}
 
@@ -69,6 +70,7 @@ public class GridElement extends GUIElement
 	{
 		int sideLength = getCoords()[2][0] - getCoords()[0][0];
 		int startX = getCoords()[0][0];
+		int startY = getCoords()[0][1];
 		int delta = sideLength / 10;
 		// Fixes issues with truncation
 		sideLength = delta * 10;
@@ -80,7 +82,7 @@ public class GridElement extends GUIElement
 			{
 				coords[1] = 11;
 			}
-			else if(x <= startX + (i * delta))
+			else if(x <= i * delta + startX)
 			{
 				coords[0] = i;
 				break;
@@ -90,7 +92,7 @@ public class GridElement extends GUIElement
 			{
 				coords[1] = 11;
 			}
-			else if(y <= i * delta)
+			else if(y <= i * delta + startY)
 			{
 				coords[1] = i;
 				break;
@@ -107,15 +109,16 @@ public class GridElement extends GUIElement
 	{
 		int sideLength = getCoords()[2][0] - getCoords()[0][0];
 		int startX = getCoords()[0][0];
+		int startY = getCoords()[0][1];
 		int delta = sideLength / 10;
 		// Fixes issues with truncation
 		sideLength = delta * 10;
 		getGUI().fill(color.getRGB());
 		getGUI().beginShape();
-		getGUI().vertex((float)x * delta + startX, (float) y * delta);
-		getGUI().vertex((float)x * delta + startX, (float) (y + 1) * delta);
-		getGUI().vertex((float)(x + 1) * delta + startX, (float) (y + 1) * delta);
-		getGUI().vertex((float)(x + 1) * delta + startX, (float) y * delta);
+		getGUI().vertex((float)x * delta + startX, (float) y * delta + startY);
+		getGUI().vertex((float)x * delta + startX, (float) (y + 1) * delta + startY);
+		getGUI().vertex((float)(x + 1) * delta + startX, (float) (y + 1) * delta + startY);
+		getGUI().vertex((float)(x + 1) * delta + startX, (float) y * delta + startY);
 		getGUI().endShape();
 	}
 }
