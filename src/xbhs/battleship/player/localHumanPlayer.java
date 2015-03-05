@@ -19,12 +19,32 @@ public class localHumanPlayer implements Player
         Scanner keyboard = new Scanner(System.in);
         int x = keyboard.nextInt();
         int y = keyboard.nextInt();
-        Move[] coordinate = new Move[1];
-        coordinate[0] = new Move(x,y);
-        return coordinate;
+        Move[] moves = new Move[1]; 
+        moves[0] = new Move(x, y);
+        if (isValid(moves[0], grid))
+        {
+            return moves;
+        }
+        return null;
     }
+     
     public ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships)
     {
         return null;
+    }
+    
+    private boolean isValid(Move m, Space[][] grid)
+    {
+        // check if x coord is out of bounds
+        if (m.getX()<0 || m.getX()>=grid.length)
+            return false;
+        // check if y coord is out of bounds
+        else if (m.getY()<0 || m.getY()>=grid[0].length)
+            return false;
+        // check if already fired here
+        else if (grid[(int)m.getX()][(int)m.getY()].isHit())
+            return false;
+        
+        return true;
     }
 }

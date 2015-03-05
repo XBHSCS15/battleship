@@ -19,9 +19,9 @@ public class HumanPlayer extends NetworkPlayer
         Scanner keyboard = new Scanner(System.in);
         int x = keyboard.nextInt();
         int y = keyboard.nextInt();
-        Move[] coordinate = new Move[1];
-        coordinate[0] = new Move(x,y);
-        return coordinate;
+        Move[] moves = new Move[1]; 
+        moves[0] = new Move(x, y);
+        return moves;
     }
     public ShipPlacement[] getPlacement(Space[][] grid, Ship[] ships)
     {
