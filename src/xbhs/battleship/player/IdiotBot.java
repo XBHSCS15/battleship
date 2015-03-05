@@ -176,6 +176,7 @@ public class IdiotBot extends ComputerPlayer
         }
         return true;
     }
+<<<<<<< HEAD
     
     // some debug code
     public static void main(String[] args)
@@ -234,4 +235,6 @@ public class IdiotBot extends ComputerPlayer
             System.out.print("\n");
         }
     }
+=======
+>>>>>>> origin/master
 }
