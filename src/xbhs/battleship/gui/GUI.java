@@ -20,10 +20,10 @@ public class GUI extends PApplet
 	@Override
 	public void setup() 
 	{
-		g = new Game(10,10, this);
 		list = new ArrayList<GUIElement>();
 		size(initWidth,initHeight);
 		background(0);
+		g = new Game(10,10, this);
 		for(int i = 0; i < list.size(); i++)
 			list.get(i).init();
 	}

@@ -48,8 +48,13 @@ public class GUIElementListHandler
 			list.add(e);
 			return;
 		}
-		for(int i = 0; i < list.size(); i++)
-			if(e.getRenderPriority() < list.get(i).getRenderPriority())
+		for(int i = 0; i <= list.size(); i++)
+			if(i == list.size())
+			{
+				list.add(e);
+				return;
+			}
+			else if(e.getRenderPriority() < list.get(i).getRenderPriority())
 			{
 				list.add(i, e);
 				return;
