@@ -40,6 +40,7 @@ public class GridElement extends GUIElement
 					fillSquare(i, j, Color.RED);
 				else
 					fillSquare(i, j, getGUI().getForeground());
+                getGUI().stroke(255,153,0);
 		for(int i = 0; i < 11; i++)
 		{
 			if(i == 11)
@@ -50,6 +51,7 @@ public class GridElement extends GUIElement
 			getGUI().line(startX, i * delta + startY, startX + sideLength, i * delta + startY);
 			getGUI().line(i * delta + startX, startY, i * delta + startX, sideLength + startY);
 		}
+                getGUI().stroke(0,0,0);
 	}
 
 	@Override
