@@ -22,8 +22,6 @@ public class Space implements java.io.Serializable
 
 	public void hit()
 	{
-                hit = true;
-		ship.incrementHitCount();
 		if (hit == false)
 		{
 			if(hasShip())
