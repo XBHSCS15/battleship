@@ -2,10 +2,15 @@ package xbhs.battleship.gui;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import processing.core.PApplet;
+import javax.imageio.ImageIO;
 
+import processing.core.PApplet;
+import processing.core.PImage;
 import static xbhs.battleship.gui.GUIElementListHandler.*;
 
 @SuppressWarnings("serial")
@@ -21,7 +26,16 @@ public class GUI extends PApplet
     {
         list = new ArrayList<GUIElement>();
         size(initWidth,initHeight);
-        background(0);
+        String workingDirectory = System.getProperty("user.dir");
+        BufferedImage img = null;
+        String filePath = workingDirectory + File.separator + "assets" + File.separator + "textures" + File.separator + "oceanripple.gif"; 
+        System.out.println(filePath);
+        try {
+            img = ImageIO.read(new File(filePath));
+        } catch (IOException e) {
+        }
+        PImage bg = new PImage(img);
+        background(bg);
         initGUIElements();
         for(int i = 0; i < list.size(); i++)
                 list.get(i).init();
