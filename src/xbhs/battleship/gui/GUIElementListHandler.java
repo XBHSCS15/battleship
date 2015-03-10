@@ -107,4 +107,13 @@ public class GUIElementListHandler
 				return;
 			}
 	}
+	public static GUIElement[] getAllInstancesOfClass(GUIElement obj)
+	{
+		ArrayList<GUIElement> tempList = new ArrayList<GUIElement>();
+		for(int i = 0; i < list.size(); i++)
+			if(list.get(i).getClass() == obj.getClass())
+				tempList.add(list.get(i));
+		GUIElement[] returnList = new GUIElement[tempList.size()];
+		return returnList;
+	}
 }
