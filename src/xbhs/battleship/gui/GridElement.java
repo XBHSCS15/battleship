@@ -37,9 +37,9 @@ public class GridElement extends GUIElement
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 10; j++)
 				if(grid[i][j])
-					fillSquare(i, j, Color.RED);
+					fillSquare(i, j, Color.RED, 0.5);
 				else
-					fillSquare(i, j, getGUI().getForeground());
+					fillSquare(i, j, getGUI().getForeground(), 0.5);
 		for(int i = 0; i < 11; i++)
 		{
 			if(i == 11)
@@ -99,21 +99,5 @@ public class GridElement extends GUIElement
 		coords[0] += coords[0] == 0 ? 0 : -1;
 		coords[1] += coords[1] == 0 ? 0 : -1;
 		return coords;
-	}
-
-	public void fillSquare(int x, int y, Color color)
-	{
-		int sideLength = getCoords()[2][0] - getCoords()[0][0];
-		int startX = getCoords()[0][0];
-		int delta = sideLength / 10;
-		// Fixes issues with truncation
-		sideLength = delta * 10;
-		getGUI().fill(color.getRGB());
-		getGUI().beginShape();
-		getGUI().vertex((float)x * delta + startX, (float) y * delta);
-		getGUI().vertex((float)x * delta + startX, (float) (y + 1) * delta);
-		getGUI().vertex((float)(x + 1) * delta + startX, (float) (y + 1) * delta);
-		getGUI().vertex((float)(x + 1) * delta + startX, (float) y * delta);
-		getGUI().endShape();
 	}
 }
