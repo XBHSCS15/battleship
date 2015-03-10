@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 
 import processing.core.PApplet;
 import processing.core.PImage;
+import xbhs.battleship.gui.buttonfunctions.TestButton;
 import static xbhs.battleship.gui.GUIElementListHandler.*;
 
 @SuppressWarnings("serial")
@@ -83,6 +84,7 @@ public class GUI extends PApplet
     {
             addElement(new GridElement((getWidth() - getHeight()) / 2, 0, 
                 (getWidth() - getHeight()) / 2 + getHeight(), getHeight(), this, Integer.MAX_VALUE));
+            addElement(new ButtonElement(0, 0, 100, 50, this, new TestButton()));
     }
        
     public static void main(String args[]) 
