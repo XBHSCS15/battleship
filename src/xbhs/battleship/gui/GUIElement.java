@@ -70,19 +70,14 @@ public abstract class GUIElement
 		priority = i;
 	}
 	
-	public void fillSquare(int x, int y, Color color, double opacity)
+	public void drawRect(int minX, int minY, int maxX, int maxY, Color color, double opacity)
 	{
-		int sideLength = getCoords()[2][0] - getCoords()[0][0];
-		int startX = getCoords()[0][0];
-		int delta = sideLength / 10;
-		// Fixes issues with truncation
-		sideLength = delta * 10;
 		getGUI().fill(color.getRGB(), 100f * (float)opacity);
 		getGUI().beginShape();
-		getGUI().vertex((float)x * delta + startX, (float) y * delta);
-		getGUI().vertex((float)x * delta + startX, (float) (y + 1) * delta);
-		getGUI().vertex((float)(x + 1) * delta + startX, (float) (y + 1) * delta);
-		getGUI().vertex((float)(x + 1) * delta + startX, (float) y * delta);
+		getGUI().vertex((float)minX, (float)minY);
+		getGUI().vertex((float)minX, (float)maxY);
+		getGUI().vertex((float)maxX, (float)maxY);
+		getGUI().vertex((float)maxX, (float)minY);
 		getGUI().endShape();
 	}
 }

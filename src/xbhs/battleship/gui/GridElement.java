@@ -100,4 +100,13 @@ public class GridElement extends GUIElement
 		coords[1] += coords[1] == 0 ? 0 : -1;
 		return coords;
 	}
+	public void fillSquare(int x, int y, Color color, double opacity)
+	{
+		int sideLength = getCoords()[2][0] - getCoords()[0][0];
+		int startX = getCoords()[0][0];
+		int delta = sideLength / 10;
+		// Fixes issues with truncation
+		sideLength = delta * 10;
+		drawRect(x * delta + startX, y * delta, (x + 1) * delta + startX, (y + 1) * delta, color, opacity);
+	}
 }
