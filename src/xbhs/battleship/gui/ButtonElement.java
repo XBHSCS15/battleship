@@ -1,6 +1,7 @@
 package xbhs.battleship.gui;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import xbhs.battleship.gui.buttonfunctions.IButtonFunction;
 
@@ -30,6 +31,8 @@ public class ButtonElement extends GUIElement
 	@Override
 	public void drawElement() 
 	{
+		setMaxX(getButtonBarWidth());
+		
 		drawRect(getCoords()[0][0], getCoords()[0][1], getCoords()[2][0], getCoords()[2][1], Color.gray, 0.8);
 		getGUI().fill(Color.BLACK.getRGB());
 		getGUI().textSize(15f);
@@ -43,5 +46,15 @@ public class ButtonElement extends GUIElement
 	public void onClicked(int x, int y) 
 	{	
 		type.act();
+	}
+	
+	public int getButtonBarWidth()
+	{
+		int minGridX = getGUI().getWidth();
+		ArrayList<GUIElement> list = GUIElementListHandler.getElementsOfType(GridElement.class);
+		for(GUIElement e : list)
+			if(e.getCoords()[0][0] < minGridX)
+				minGridX = e.getCoords()[0][0];
+		return minGridX;
 	}
 }

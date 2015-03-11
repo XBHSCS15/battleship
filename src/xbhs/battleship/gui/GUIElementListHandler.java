@@ -107,4 +107,12 @@ public class GUIElementListHandler
 				return;
 			}
 	}
+	public static ArrayList<GUIElement> getElementsOfType(Class c)
+	{
+		ArrayList<GUIElement> returnList = new ArrayList<GUIElement>();
+		for(int i = 0; i < list.size(); i++)
+			if(list.get(i).getClass().equals(c))
+				returnList.add(list.get(i));
+		return returnList;
+	}
 }
