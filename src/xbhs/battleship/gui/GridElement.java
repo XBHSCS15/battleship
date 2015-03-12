@@ -37,9 +37,9 @@ public class GridElement extends GUIElement
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 10; j++)
 				if(grid[i][j])
-					fillSquare(i, j, Color.RED, 0.5);
+					fillSquare(i, j, Color.RED, 0.6);
 				else
-					fillSquare(i, j, getGUI().getForeground(), 0.5);
+					fillSquare(i, j, getGUI().getForeground(), .65);
 		for(int i = 0; i < 11; i++)
 		{
 			if(i == 11)

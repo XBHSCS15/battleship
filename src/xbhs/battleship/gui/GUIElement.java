@@ -72,7 +72,7 @@ public abstract class GUIElement
 	
 	public void drawRect(int minX, int minY, int maxX, int maxY, Color color, double opacity)
 	{
-		getGUI().fill(color.getRGB(), 100f * (float)opacity);
+		getGUI().fill(color.getRGB(), 255f * (float)opacity);
 		getGUI().beginShape();
 		getGUI().vertex((float)minX, (float)minY);
 		getGUI().vertex((float)minX, (float)maxY);
