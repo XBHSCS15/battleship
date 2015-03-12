@@ -24,6 +24,7 @@ public class GUI extends PApplet
     int initWidth = gd.getDisplayMode().getWidth()/2;
     int initHeight = gd.getDisplayMode().getHeight()/2;
     boolean mousePressedLastFrame = false;
+    public PImage background;
 
     @Override
     public void setup() 
@@ -44,9 +45,9 @@ public class GUI extends PApplet
         for(int i = 0; i < width; i++)
         	for(int j = 0; j < height; j++)
         		img.setRGB(i, j, tempImg.getRGB(i, j));
-        PImage bg = new PImage(img);
-        bg.resize(getWidth(), getHeight());
-        background(bg);
+        background = new PImage(img);
+        background.resize(getWidth(), getHeight());
+        background(background);
         initGUIElements();
         for(int i = 0; i < list.size(); i++)
                 list.get(i).init();
@@ -55,6 +56,7 @@ public class GUI extends PApplet
     @Override
     public void draw() 
     {
+    	background(background);
         if(mousePressed)
         {
                 Object[] elementsAtPoint = getElementsAtCoords(mouseX, mouseY);

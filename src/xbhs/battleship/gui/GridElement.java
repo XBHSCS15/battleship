@@ -37,9 +37,9 @@ public class GridElement extends GUIElement
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 10; j++)
 				if(grid[i][j])
-					fillSquare(i, j, Color.RED, 0.5);
+					fillSquare(i, j, Color.RED, 0.6);
 				else
-					fillSquare(i, j, getGUI().getForeground(), 0.5);
+					fillSquare(i, j, getGUI().getForeground(), .65);
 		for(int i = 0; i < 11; i++)
 		{
 			if(i == 11)
@@ -68,7 +68,6 @@ public class GridElement extends GUIElement
 		int sideLength = getCoords()[2][0] - getCoords()[0][0];
 		int startX = getCoords()[0][0];
 		int delta = sideLength / 10;
-		// Fixes issues with truncation
 		sideLength = delta * 10;
 		if(x < startX || x > startX + sideLength)
 			return null;
@@ -93,9 +92,6 @@ public class GridElement extends GUIElement
 				coords[1] = i;
 				break;
 			}
-		/**
-		 * To avoid indexOutOfBoundsExceptions on the grid array
-		 */
 		coords[0] += coords[0] == 0 ? 0 : -1;
 		coords[1] += coords[1] == 0 ? 0 : -1;
 		return coords;
@@ -105,7 +101,6 @@ public class GridElement extends GUIElement
 		int sideLength = getCoords()[2][0] - getCoords()[0][0];
 		int startX = getCoords()[0][0];
 		int delta = sideLength / 10;
-		// Fixes issues with truncation
 		sideLength = delta * 10;
 		drawRect(x * delta + startX, y * delta, (x + 1) * delta + startX, (y + 1) * delta, color, opacity);
 	}
